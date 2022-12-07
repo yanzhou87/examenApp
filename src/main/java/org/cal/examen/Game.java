@@ -9,21 +9,13 @@ public class Game {
     int[] purses  = new int[6];
     boolean[] inPenaltyBox  = new boolean[6];
 
-    LinkedList<String> popQuestions = new LinkedList<>();
-    LinkedList<String> scienceQuestions = new LinkedList<>();
-    LinkedList<String> sportsQuestions = new LinkedList<>();
-    LinkedList<String> rockQuestions = new LinkedList<>();
+    Question question = new Question();
 
     int currentPlayer = 0;
     boolean isGettingOutOfPenaltyBox;
 
     public  Game(){
-        for (int i = 0; i < 50; i++) {
-            popQuestions.addLast("Pop Question " + i);
-            scienceQuestions.addLast(("Science Question " + i));
-            sportsQuestions.addLast(("Sports Question " + i));
-            rockQuestions.addLast(("Rock Question " + i));
-        }
+        question.add();
     }
 
     public boolean add(String playerName) {
@@ -75,16 +67,7 @@ public class Game {
     }
 
     private void askQuestion() {
-        switch (currentCategory()){
-            case "Pop":
-                System.out.println(popQuestions.removeFirst());
-            case "Science":
-                System.out.println(scienceQuestions.removeFirst());
-            case "Sports":
-                System.out.println(sportsQuestions.removeFirst());
-            case "Rock":
-                System.out.println(rockQuestions.removeFirst());
-        }
+       question.remove(currentCategory());
     }
 
     private String currentCategory() {
